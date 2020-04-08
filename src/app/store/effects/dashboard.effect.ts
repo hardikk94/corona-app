@@ -20,15 +20,20 @@ export class DashboardEffect {
             ofType(dashboardActionTypes.LIST_REQUESTED), map(this.toPayload),
             switchMap(payload => this.authService.getList(payload)),
             mergeMap((res: any) => {
-                console.log("res", res)
                 let loading: LoadingState = { isLoading: false, message: null }
                 let dashboardResponse: DashboardState;
-                if (res.success) {
-                    dashboardResponse = { list: res }
-                }
-                else {
-                    dashboardResponse = { list: [] }
-                }
+                let list = []
+                if (res && res.length > 0) {
+                    list = res.slice(0, 10)
+                    list = list.map((item, index) => {
+                        return {
+                            id: Math.floor(Math.random() * 100),
+                            title: item.provinceState,
+                            name: item.combinedKey
+                        }
+                    })
+                    dashboardResponse = { list }
+                }                
                 return from([
                     (new LoadingHideRequested(loading)),
                     (new ListCompletedAction(dashboardResponse))

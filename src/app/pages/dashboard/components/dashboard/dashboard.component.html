@@ -7,34 +7,39 @@
             </div>
             <div class="row justify-content-md-center">
                 <div class="col">
-                    <div class="row">                        
+                    <div class="row">
                         <div class="col col-lg-4 col-md-12 col-xs-12 leftside">
-                            <div class="list_wrapper">
-                                <div class="alert alert-secondary" role="alert">
-                                    A simple secondary alert—check it out!
-                                </div>
-                                <div class="alert alert-secondary" role="alert">
-                                    A simple secondary alert—check it out!
-                                </div>
-                                <div class="alert alert-secondary" role="alert">
-                                    A simple secondary alert—check it out!
-                                </div>
-                                <div class="alert alert-secondary" role="alert">
-                                    A simple secondary alert—check it out!
+                            <div class="list_wrapper" *ngFor="let note of notes">
+
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{note.title}}</h5>
+                                        <p class="card-text">{{note.name}}</p>
+                                        <a href="javascript:;" class="card-link note_lnk"
+                                            (click)="deleteList(note)">Delete</a>
+                                        <a href="javascript:;" class="card-link note_lnk"
+                                            (click)="updateList(note)">update</a>
+                                    </div>
                                 </div>
                             </div>
-                           
                         </div>
-                        <div class="col col-lg-8 col-md-12 col-xs-12 rightside">
-                            <div class="row">
-                                <button type="button" class="btn btn-success btn-sm">Add Note</button>
-                            </div>
-                            <div class="row">
-                                Title
-                            </div>
-                            <div class="row">
-                                Body
-                            </div>
+                        <div class="col col-lg-8 col-md-12 col-xs-12 rightside add_form_wrapper">
+                            <form [formGroup]="listForm" (ngSubmit)="addList()">
+                                <div class="row btn_wrapper">
+                                    <button type="submit" class="btn btn-success btn-sm note_add_btn"
+                                        [disabled]="!listForm.valid">Add Note</button>
+                                </div>
+                                <div class="form-group">
+                                    <label for="title">Title</label>
+                                    <input type="text" class="form-control" id="title" placeholder="title"
+                                        formControlName="title" name="title">
+                                </div>
+                                <div class="form-group">
+                                    <label for="name">describe here</label>
+                                    <textarea type="text" class="form-control" formControlName="name" name="name"
+                                        id="name" rows="3"></textarea>
+                                </div>
+                            </form>
 
                         </div>
                     </div>

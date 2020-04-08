@@ -18,6 +18,25 @@
         .list_wrapper{
             margin-top:20px            
         }
+        .note_lnk{
+            color: blue;
+        }
+        .btn_wrapper{
+
+        display: flex;
+        flex-direction: column;
+        margin: auto;
+        height: 10%;
+        justify-content:center;
+        align-items: flex-end;
+        }
+        .note_add_btn{
+            width: 100px;
+            
+        }
+        .add_form_wrapper{
+            margin-top: 40px;
+        }
     }
   
 }

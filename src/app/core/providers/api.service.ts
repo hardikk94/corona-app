@@ -43,7 +43,7 @@ export class ApiService {
    * @param params req params data
    */
   get(path: string, params: HttpParams = new HttpParams()): Observable<apiResponse> {
-    return this.http.get<apiResponse>(`${environment.api_url}${path}`, { headers: this.setJsonDataHeaders(), params })
+    return this.http.get<apiResponse>(`${environment.api_url}${path}`)
       .pipe(catchError(this.handleError));
   }
 

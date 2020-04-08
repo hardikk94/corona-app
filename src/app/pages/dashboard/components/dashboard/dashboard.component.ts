@@ -5,7 +5,7 @@ import { AppState } from "src/app/store/states/app.state";
 import { LoadingShowRequested } from "src/app/store/actions/loading.action";
 import { LoadingState } from "src/app/store/states/loading.state";
 import { DashboardState } from "src/app/store/states/dashboard.state";
-
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -13,11 +13,16 @@ import { DashboardState } from "src/app/store/states/dashboard.state";
 })
 export class DashboardComponent implements OnInit {
   public dashboadSubscriber;
+  public listForm: FormGroup;
+  public notes: any = []
   constructor(public dashboardStoreServce: DashboardStoreService,
-    private store: Store<AppState>, ) {
-  }
+    private store: Store<AppState>, public formBuilder: FormBuilder) {
+      this.listForm = this.formBuilder.group({
+        title: ["", [Validators.required]],
+        name: ["", [Validators.required]]
+      });
+      
 
-  ngOnInit() {
     let loadingState: LoadingState = {
       isLoading: true,
       message: "Fetching..."
@@ -25,10 +30,14 @@ export class DashboardComponent implements OnInit {
     this.store.dispatch(new LoadingShowRequested(loadingState));
     this.dashboardStoreServce.dispatchListAction({ data: "1" });
 
+  }
+
+  ngOnInit() {
     this.dashboadSubscriber = this.dashboardStoreServce
       .storeSelect()
       .subscribe((response: DashboardState) => {
-        console.log("get list", response)
+        this.notes = response.list
+        console.log("this.notes", this.notes)
       });
   }
 
@@ -38,5 +47,20 @@ export class DashboardComponent implements OnInit {
     }
   }
 
+  public deleteList(item) {
+    this.dashboardStoreServce.dispatchListDeleteAction(item)    
+  }
+  public updateList(item) {
+    console.log("going to update")
+  }
+  public addList() {
+    this.dashboardStoreServce.dispatchListAddAction(this.listForm.value)    
+  }
+
+  public testhere(){
+    console.log("testhere",this.listForm)
+  }
+  
+  
 
 }
