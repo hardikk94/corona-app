@@ -16,6 +16,11 @@ A project is performing basic crud operation but a structure is totally differen
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.0.
 
+## Github Pages URl
+run directly in the browser
+
+https://hardikk94.github.io/corona-app/#/auth
+
 
 ## Application cred
    email : "covid19@gmail.com" 
