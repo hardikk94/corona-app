@@ -17,11 +17,11 @@ export class DashboardComponent implements OnInit {
   public notes: any = []
   constructor(public dashboardStoreServce: DashboardStoreService,
     private store: Store<AppState>, public formBuilder: FormBuilder) {
-      this.listForm = this.formBuilder.group({
-        title: ["", [Validators.required]],
-        name: ["", [Validators.required]]
-      });
-      
+    this.listForm = this.formBuilder.group({
+      title: ["", [Validators.required]],
+      name: ["", [Validators.required]]
+    });
+
 
     let loadingState: LoadingState = {
       isLoading: true,
@@ -48,19 +48,16 @@ export class DashboardComponent implements OnInit {
   }
 
   public deleteList(item) {
-    this.dashboardStoreServce.dispatchListDeleteAction(item)    
-  }
-  public updateList(item) {
-    console.log("going to update")
+    this.dashboardStoreServce.dispatchListDeleteAction(item)
   }
   public addList() {
-    this.dashboardStoreServce.dispatchListAddAction(this.listForm.value)    
+    this.dashboardStoreServce.dispatchListAddAction(this.listForm.value)
   }
 
-  public testhere(){
-    console.log("testhere",this.listForm)
+  public testhere() {
+    console.log("testhere", this.listForm)
   }
-  
-  
+
+
 
 }
