@@ -32,7 +32,8 @@ export class LoginComponent implements OnInit, OnDestroy {
       .storeSelect()
       .subscribe((response: AuthState) => {
         if (response.success) {
-          sessionStorage.setItem("authtoken","1");
+          sessionStorage.setItem("email",response.userData.email);
+          sessionStorage.setItem("authtoken",response.userData.authToken);
           this.router.navigate(["home"]);
         }
       });
@@ -44,7 +45,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     }
   }
 
-  public login() {
+  public login() {    
     let loadingState: LoadingState = {
       isLoading: true,
       message: "Authenticating..."

@@ -2,21 +2,21 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-lg-5 col-md-6 col-xs-12 leftside">
-        <img src="assets/images/img-leftside-login.png" alt="Cambray Catering Recruitment wall image">        
+        <img src="assets/images/img-leftside-login.png" alt="Corona front ene image">        
       </div>
       <div class="col-lg-7 col-md-6 col-xs-12 rightside">
         <div class="login-form-wrapper">
-          <div class="logo-image">
-            <img src="assets/images/logo-login.png" alt="Cambray Catering Recruitment wall image">
+          <div class="logo-title">
+            Covid-19 Tracker
           </div>
           <div class="info-title">
-            Welcome back!Please login to your account.
+            Welcome back!Please login to your account.           
           </div>
           <div class="login-form">
             <form [formGroup]="loginForm" (ngSubmit)="login()">
               <div class="form-group">
                 <input type="email" class="form-control" id="email" placeholder="Email" formControlName="email"
-                  name="email" data-toggle="tooltip" data-placement="top" title="Email" />
+                  name="email" data-toggle="tooltip" data-placement="top" title="Email" />                  
                 <span *ngIf="
                     (loginForm.get('email').dirty ||
                       loginForm.get('email').touched) &&

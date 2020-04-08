@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  api_url:'https://covid19.mathdro.id/api',  
+  api_url:'http://covid19.mathdro.id/api/',  
 };
 
 /*

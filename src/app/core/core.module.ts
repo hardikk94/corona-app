@@ -11,6 +11,7 @@ import { AppRoutingModule } from './../app-routing.module';
 import { AuthGuardService } from './providers/auth.guard.service'
 import { AuthService } from './../store/providers/auth.service'
 import { AuthStoreService } from './../store/stores/auth.store'
+import { DashboardStoreService } from './../store/stores/dashboard.store'
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { LoaderService } from './providers/loader.service';
 import { ModalService } from './providers/modal.service';
@@ -43,6 +44,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
         ApiService,                
         AuthGuardService,
         AuthStoreService,
+        DashboardStoreService,
         AuthService,
         LoaderService,
         ModalService,       
